@@ -22,7 +22,11 @@ Please note that the program mentioned is running Java 11.0. All systems that wi
 # Dowload link and installation instrctions for Linux, Windows and MAC OS can be found here
 https://www.oracle.com/java/technologies/downloads/#jdk18-windows
 
+# Application and user manual can be downloaded here
+https://www.dropbox.com/sh/7u73pisdtyepz0m/AACEz999iXEE33gvb4F-A6hWa?dl=0
 
+
+ 
  
 Creditation for development of the application lies soley with the following
 
