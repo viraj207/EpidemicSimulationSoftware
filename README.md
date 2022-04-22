@@ -26,8 +26,8 @@ https://www.oracle.com/java/technologies/downloads/#jdk18-windows
  
 Creditation for development of the application lies soley with the following
 
-- Antonis Theodorou
-- Charles Reilly
-- Emmanuel Boateng
-- Viraj Patel
-- Milly Edwards
+- Antonis Theodorou / mrforum16
+- Charles Reilly    / charlesreillyUOL
+- Emmanuel Boateng  / eboateng25
+- Milly Edwards     / milly98367
+- Viraj Patel       / viraj207
