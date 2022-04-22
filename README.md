@@ -17,5 +17,17 @@
 - DirectX: Version 9.0.<br/>
 - Storage: 5 GB available space.<br/>
 
- 
+Please note that the program mentioned is running Java 11.0. All systems that wish to run the program must have an adequate Java SDK & JDK installed to ensure the program runs smoothly. The system requirements above are used as minimum requirements to start the program. Depending on the input size of the simulation, the program may not run properly as resources will be consumed.
 
+# Dowload link and installation instrctions for Linux, Windows and MAC OS can be found here
+https://www.oracle.com/java/technologies/downloads/#jdk18-windows
+
+
+ 
+Creditation for development of the application lies soley with the following
+
+- Antonis Theodorou
+- Charles Reilly
+- Emmanuel Boateng
+- Viraj Patel
+- Milly Edwards
