@@ -1,19 +1,17 @@
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Graphics;
-import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.font.FontRenderContext;
 import java.awt.geom.Rectangle2D;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -24,6 +22,8 @@ import javax.swing.Timer;
 
 public class BarResults extends JPanel implements ActionListener {
 
+    Component simframe;
+    
     int healthy = 0;
     int recovered = 0;
     int infected = 0;
@@ -39,18 +39,8 @@ public class BarResults extends JPanel implements ActionListener {
     
     ArrayList<DayData> all_dr;
 
-//    public static void main(String[] args) throws InterruptedException {
-//        BarResults game = new BarResults(100);
-//        game.init();
-//        Random r = new Random();
-//        while (true) {
-//            game.update();
-//            Thread.sleep(100);
-//            game.setData(r.nextInt(100), r.nextInt(100), r.nextInt(100), r.nextInt(100), r.nextInt(100), r.nextInt(5));
-//        }
-//    }
-
-    public BarResults(int population) {
+    public BarResults(Component simframe, int population) {
+        this.simframe = simframe;
         this.population = population;
     }
 
@@ -161,6 +151,9 @@ public class BarResults extends JPanel implements ActionListener {
         JFrame frame = new JFrame("Epidemic simulator - Statistics");
         frame.add(this);
         frame.setSize(850, 230);
+        frame.setLocation(this.simframe.getLocation().x + 
+                (this.simframe.getWidth() / 2) - 
+                (frame.getWidth() / 2),this.simframe.getLocation().y + this.simframe.getHeight() + 10);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         

@@ -60,12 +60,11 @@ public class SimFrame extends JPanel implements ActionListener{
 					double sLevel, double vLevel, int tLevel) {
 		maxDay = tLevel;
 		populationSize = pLevel;
-		br = new BarResults(populationSize);
-		br.init();
 		simFrame = new JFrame("Epidemic simulation");
 		simFrame.setSize(700,500); 
 		simFrame.setResizable(false);
 		simFrame.setLocationRelativeTo(null);
+                simFrame.setLocation(simFrame.getLocation().x, simFrame.getLocation().y - 100);
 		simFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		for(int i = 0; i < populationSize; i++) {
 			peopleList.add(new Person(populationSize,iLevel,mLevel,hLevel,cLevel,lLevel,sLevel,vLevel,tLevel));
@@ -74,7 +73,10 @@ public class SimFrame extends JPanel implements ActionListener{
 		clock.restart();
 		simFrame.setContentPane(this);
 		simFrame.getContentPane().setBackground(Color.gray);
-		simFrame.setVisible(true);		
+		simFrame.setVisible(true);	
+                
+                br = new BarResults(simFrame,populationSize);
+		br.init();
 	}
 
 	
