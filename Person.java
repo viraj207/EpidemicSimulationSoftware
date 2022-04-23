@@ -59,12 +59,13 @@ public class Person {
 
 	public void collision(Person p2) {
 		
+		// Hit boxs equaling the size of Person node are used to check for collisions. 
 		Rectangle hitboxP1 = new Rectangle(p2.x,p2.y, 10,10);
 		Rectangle hitboxP2 = new Rectangle(this.x,this.y, 10,10);
 		
-		//collision check
+		/// Conditional check; if two squares intersect they're marked as collison. Each node is checked respectively.
 		if(hitboxP1.intersects(hitboxP2)) {
-			
+			// Depending on masked status, virus contagiousness and hygiene level. Risks of infection is varied.
 			if(this.infectionStatus==1 && p2.infectionStatus==0) {
 				if(isMasked) {
 					if(Math.random() < 0.5*(1+hygieneLevel)*(1+contagiousness) ) {
@@ -86,7 +87,7 @@ public class Person {
 	}
 		
 	public void paint(Graphics g2d) {
-		
+		// Switch statement to each classify status of infection and therefore, change colour indicators.
 		switch(infectionStatus) {
 			case 0: 
 				g2d.setColor(P_GREEN);
@@ -107,10 +108,8 @@ public class Person {
 		}
 		
 		if(infectionStatus ==1) {
-			
-			healingTime-=16;
-			
-			
+			// If a person is infected, they immediately begin to heal. Each tick reducing their healingTime left.
+			healingTime-=16;			
 			if(healingTime<=0) {
 				if(Math.random() < (1-deathChance)) {
 					infectionStatus = 2;
@@ -125,7 +124,7 @@ public class Person {
 			}
 		}
 		
-		
+		// X and Y position are changed by constant vector; representing linear movement.
 		x += xVelocity;
 		y += yVelocity;
 		
