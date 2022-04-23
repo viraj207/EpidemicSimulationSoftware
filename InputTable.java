@@ -38,6 +38,12 @@ class InputTable extends JFrame implements ActionListener {
     private JTextField timeSpanField;
     private JButton simButton;
     private JButton resetButton;
+    
+    private final String DEFAULT_POPULATION = "200";
+    private final String DEFAULT_INFECTED = "8";
+    private final String DEFAULT_MASKED = "100";
+    private final String DEFAULT_VACCINATED = "100";
+    private final String DEFAULT_DAYS = "30";
 
     public InputTable() {
         setTitle("Epidemic Simulation - Setup");
@@ -65,6 +71,7 @@ class InputTable extends JFrame implements ActionListener {
         populationField.setFont(new Font("Arial", Font.PLAIN, 15));
         populationField.setSize(330, 20);
         populationField.setLocation(320, 100);
+        populationField.setText(DEFAULT_POPULATION);
         c.add(populationField);
 
         infectedLabel = new JLabel("Intially Infected (%):");
@@ -77,6 +84,7 @@ class InputTable extends JFrame implements ActionListener {
         infectedField.setFont(new Font("Arial", Font.PLAIN, 15));
         infectedField.setSize(330, 20);
         infectedField.setLocation(320, 130);
+        infectedField.setText(DEFAULT_INFECTED);
         c.add(infectedField);
 
         maskedLabel = new JLabel("Masked (%):");
@@ -89,6 +97,7 @@ class InputTable extends JFrame implements ActionListener {
         maskedField.setFont(new Font("Arial", Font.PLAIN, 15));
         maskedField.setSize(330, 20);
         maskedField.setLocation(320, 160);
+        maskedField.setText(DEFAULT_MASKED);
         c.add(maskedField);
 
         hygieneLabel = new JLabel("Hygiene Level (est.):");
@@ -134,6 +143,7 @@ class InputTable extends JFrame implements ActionListener {
         hygieneGroup.add(hygieneMedium);
         hygieneGroup.add(hygieneHigh);
         hygieneGroup.add(hygieneAbsolute);
+        hygieneAbsolute.setSelected(true);
 
         contagiousnessLabel = new JLabel("Contagiousness (est.): ");
         contagiousnessLabel.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -266,6 +276,7 @@ class InputTable extends JFrame implements ActionListener {
         socialDistancingGroup.add(socialDistancingMedium);
         socialDistancingGroup.add(socialDistancingHigh);
         socialDistancingGroup.add(socialDistancingAbsolute);
+        socialDistancingAbsolute.setSelected(true);
 
         vaccinationLabel = new JLabel("Vaccinated (%): ");
         vaccinationLabel.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -277,6 +288,7 @@ class InputTable extends JFrame implements ActionListener {
         vaccinationField.setFont(new Font("Arial", Font.PLAIN, 15));
         vaccinationField.setSize(330, 20);
         vaccinationField.setLocation(320, 310);
+        vaccinationField.setText(DEFAULT_VACCINATED);
         c.add(vaccinationField);
 
         timeSpanLabel = new JLabel("Time span (days):");
@@ -289,6 +301,7 @@ class InputTable extends JFrame implements ActionListener {
         timeSpanField.setFont(new Font("Arial", Font.PLAIN, 15));
         timeSpanField.setSize(330, 20);
         timeSpanField.setLocation(320, 340);
+        timeSpanField.setText(DEFAULT_DAYS);
         c.add(timeSpanField);
 
         simButton = new JButton("Simulate");
@@ -306,6 +319,7 @@ class InputTable extends JFrame implements ActionListener {
         c.add(resetButton);
 
         this.addListeners();
+        this.validateInputs();
 
         setVisible(true);
     }
