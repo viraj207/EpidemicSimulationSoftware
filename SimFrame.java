@@ -55,11 +55,11 @@ public class SimFrame extends JPanel implements ActionListener{
 		}
 	}
 	
-	/* constructor will setup our main Graphic User Interface - a simple Frame! */
+	/* A constructor to create the simulation window (frame); passing all user-input data through the arguements */
 	public SimFrame(int pLevel, double iLevel, double mLevel, double hLevel, double cLevel, double lLevel, 
 					double sLevel, double vLevel, int tLevel) {
-		maxDay = tLevel;
-		populationSize = pLevel;
+		maxDay = tLevel; // Represents the number of days the simulation will span.
+		populationSize = pLevel; 
 		simFrame = new JFrame("Epidemic simulation");
 		simFrame.setSize(700,500); 
 		simFrame.setResizable(false);
@@ -67,27 +67,27 @@ public class SimFrame extends JPanel implements ActionListener{
                 simFrame.setLocation(simFrame.getLocation().x, simFrame.getLocation().y - 100);
 		simFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		for(int i = 0; i < populationSize; i++) {
-			peopleList.add(new Person(populationSize,iLevel,mLevel,hLevel,cLevel,lLevel,sLevel,vLevel,tLevel));
+			peopleList.add(new Person(populationSize,iLevel,mLevel,hLevel,
+						  cLevel,lLevel,sLevel,vLevel,tLevel)); // Iteratively instantiate and add Person objects to population list.
 		}
-		Timer clock = new Timer(10, this); 
-		clock.restart();
+		Timer clock = new Timer(10, this); // Timer object instantiated to iteratively loop so graphics can update/refresh.
+		clock.restart(); // Restart effectively represents the looping
 		simFrame.setContentPane(this);
 		simFrame.getContentPane().setBackground(Color.gray);
 		simFrame.setVisible(true);	
                 
-                br = new BarResults(simFrame,populationSize);
+                br = new BarResults(simFrame,populationSize); // Creates the graphing window
 		br.init();
 	}
 
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		repaint();
-		new Random();
+		repaint(); // Calls function to instruct the windows nodes (People) to update position and state. 
 		Person p = peopleList.get(0);
 		int healthy = p.getTotal() - p.getInfected() - p.getDeceased();
 		int infectionRate = p.getInfected() / currDay;
-		br.update();
+		br.update(); // In accordance with the Timer object the data in the graphs is updated.
 		br.setData(healthy,p.getRecovered(),p.getInfected(),p.getDeceased(),infectionRate,currDay);
 	}	
 }
