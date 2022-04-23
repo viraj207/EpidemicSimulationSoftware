@@ -39,6 +39,7 @@ class InputTable extends JFrame implements ActionListener {
     private JButton simButton;
     private JButton resetButton;
     
+    /* The following section declares default values for each text field input */
     private final String DEFAULT_POPULATION = "200";
     private final String DEFAULT_INFECTED = "8";
     private final String DEFAULT_MASKED = "100";
@@ -47,14 +48,14 @@ class InputTable extends JFrame implements ActionListener {
 
     public InputTable() {
         setTitle("Epidemic Simulation - Setup");
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(null); 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(800, 500);
         setResizable(false);
         setBackground(Color.gray);
         c = getContentPane();
         c.setLayout(null);
-
+        
         title = new JLabel("Simulation Settings");
         title.setFont(new Font("Arial", Font.PLAIN, 30));
         title.setSize(300, 30);
@@ -328,12 +329,12 @@ class InputTable extends JFrame implements ActionListener {
         DocumentListener dl = new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                validateInputs();
+                validateInputs(); // Calls validation function. Every time a user-typed input is given.
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                validateInputs();
+                validateInputs(); 
             }
 
             @Override
@@ -341,7 +342,9 @@ class InputTable extends JFrame implements ActionListener {
                 validateInputs();
             }
         };
-        this.populationField.getDocument().addDocumentListener(dl);
+        /* Each of the following lines is working to add a document listener 
+        to each field so live error handling can work */
+        this.populationField.getDocument().addDocumentListener(dl); 
         this.infectedField.getDocument().addDocumentListener(dl);
         this.maskedField.getDocument().addDocumentListener(dl);
         this.vaccinationField.getDocument().addDocumentListener(dl);
