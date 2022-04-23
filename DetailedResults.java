@@ -21,7 +21,7 @@ import javax.swing.JTextArea;
 
 public final class DetailedResults {
     
-    JFrame frame;
+    JFrame frame; // Intialising the Jframe to represent the window. Global scope
     
     public DetailedResults(ArrayList<DayData> data, int population){
         frame = new JFrame("");
@@ -46,11 +46,11 @@ public final class DetailedResults {
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                saveFile(dataToString(data,population));
+                saveFile(dataToString(data,population)); // Assigning the save button functionality.
             }
         });
     }
-    
+    /* This function works with System I/O to save the file to your local machine as a .txt */
    public void saveFile(String data){
        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");  
        LocalDateTime now = LocalDateTime.now();  
@@ -73,7 +73,7 @@ public final class DetailedResults {
            }
         }
    }
-    
+    /* Following function formats the data following each day so that it can be saved to .txt file */
     public String dataToString(ArrayList<DayData> data, int population){
         String s = "";
         s += "Starting Population: "+population;
