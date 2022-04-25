@@ -38,12 +38,12 @@ public class BarResults extends JPanel implements ActionListener {
     DetailedResults dr;
     
     ArrayList<DayData> all_dr;
-
+    // Constructor to create the Bar Result window. Needing population and simulation JFrame.
     public BarResults(Component simframe, int population) {
         this.simframe = simframe;
         this.population = population;
     }
-
+    // Set Data function allows for new values to populate the Jframe and its appropriate graphs.
     public void setData(int healthy, int recovered, int infected, int dead, int spread_rate, int day) {
         this.healthy = healthy;
         this.recovered = recovered;
@@ -52,15 +52,15 @@ public class BarResults extends JPanel implements ActionListener {
         this.spread_rate = spread_rate;
         this.day = day;
 
-        // Update stored data
-        if (this.day > current_day) { // record data
+        // If a new day is reached then the data must be updated.
+        if (this.day > current_day) { 
             current_day = this.day;
             all_dr.add(new DayData(this.healthy,this.recovered,this.infected,this.dead,this.spread_rate,this.day));
             
         }
 
     }
-
+    // Overriding the paint method. Allows the Bar Results window to handle it own redrawing.
     @Override
     public void paint(Graphics g) {
         super.paint(g);
@@ -82,16 +82,16 @@ public class BarResults extends JPanel implements ActionListener {
         
 
     }
-
+    // This is the intialising step of the window. 
     private void drawBars(Graphics2D g2d, int healthy, int recovered, int infected, int dead, int population) {
         int x = 160;
         int y = 25;
 
-        int y_spacing = 30;
-
+        int y_spacing = 30; // Fixed spacing is required to keep the graph equidistant 
+        
         int max_width = 300;
         int height = 25;
-
+        // This redraws the bars with a maximum width of a 100 pixels. They variate based on setData() inputs from the simulation. 
         g2d.setColor(Color.GREEN);
         g2d.fillRect(x, y, (int) ((float) healthy / (float) population * (float) max_width), height);
         drawTextAL(g2d, String.valueOf(healthy), x + (int) ((float) healthy / (float) population * (float) max_width) + 10, y + 17, Color.BLACK);
@@ -146,7 +146,7 @@ public class BarResults extends JPanel implements ActionListener {
         g2d.setFont(font);
         g2d.drawString(string, x, y);
     }
-
+    // This is intialising of the basic window. Creating frame for the data to be held in. 
     public void init() {
         JFrame frame = new JFrame("Epidemic simulator - Statistics");
         frame.add(this);
@@ -159,7 +159,7 @@ public class BarResults extends JPanel implements ActionListener {
         
         all_dr = new ArrayList<DayData>();
 
-        //view results button
+        
         this.setLayout(new BorderLayout());
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBackground(Color.WHITE);
@@ -170,7 +170,7 @@ public class BarResults extends JPanel implements ActionListener {
 		Timer t2 = new Timer(10,this);
 		t2.restart();
         viewDetailsButton.addActionListener(new ActionListener() {
-            @Override
+            @Override. // Action listener checks if "View results" is clicked and opens it dependent on condition. 
             public void actionPerformed(ActionEvent e) {
                 if (dr != null) {
                     dr.destroy();
@@ -181,7 +181,7 @@ public class BarResults extends JPanel implements ActionListener {
 
         this.setBackground(Color.WHITE);
     }
-
+    // Update method used to pause the running of the program to prevent overcalculations. 
     public void update() {
         this.repaint();
         try {
