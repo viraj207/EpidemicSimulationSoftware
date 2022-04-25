@@ -36,16 +36,16 @@ public class Person {
 			deathChance *= 0.05;
 
 		}
-		if(Math.random()<0.01*mLevel) {
+		if(Math.random()<0.01*mLevel) { // Generates a certain percentage of the population to be masked.
 			isMasked = false;
 		}
 		
-		if(Math.random()<(0.01*iLevel)) {
+		if(Math.random()<(0.01*iLevel)) { // Generates a certain percentage of the population to be intially infected.
 			infectionStatus = 1;
 			numInfected++;
 		}
 		
-		if(Math.random()>(sLevel)) {
+		if(Math.random()>(sLevel)) { // Generates a certain starting velocity for the Person.
 			xVelocity  = (int)(Math.random()*(6+1)+-3);
 			yVelocity  = (int)(Math.random()*(6+1)+-3);
 		}
