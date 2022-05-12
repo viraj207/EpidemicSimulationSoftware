@@ -26,6 +26,7 @@ public final class DetailedResults {
     public DetailedResults(ArrayList<DayData> data, int population){
         frame = new JFrame("");
         frame.setSize(400, 600);
+        frame.setResizable(false);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         
