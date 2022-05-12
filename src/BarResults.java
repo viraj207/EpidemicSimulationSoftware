@@ -150,6 +150,7 @@ public class BarResults extends JPanel implements ActionListener {
     public void init() {
         JFrame frame = new JFrame("Epidemic simulator - Statistics");
         frame.add(this);
+	frame.setResizable(false);
         frame.setSize(850, 230);
         frame.setLocation(this.simframe.getLocation().x + 
                 (this.simframe.getWidth() / 2) - 
